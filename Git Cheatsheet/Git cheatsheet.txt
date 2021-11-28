@@ -1,0 +1,34 @@
+Git config --global user.name "siavash aghazadeh"
+Git config --global user.email siavash.agh@gmail.com 
+Git config --global --list
+Git init , Git status
+Git add . || add <file>
+Git add patch <file>
+Git log --oneline --all --graph
+Git commit || Git commit -m "message"
+Git show <here hash of an commit>
+Git restore –staged <file>
+Git restore <file>
+Git restore --sourse <commit hash> <file>
+Git reset HEAD~2 || Git reset <hash of an commit>
+Git branch 
+Git branch <branch name>
+branch <branch name>(<hash of commit>||<HEAD~n>)
+Git branch -d <branch name>
+Git switch (switch between branchs)
+Git checkout (switch between branchs)
+(get to master branch and..) Git merge <branch name>
+Git diff <branch name>--<branch name>
+Git stash , Git stash -u <= (this for untracked files)
+Git stash list
+Git stash show <stash id>
+Git stash (apply || pop) <stash id>
+Git stash clear
+Git remote 
+Git remote add <name> <url>
+Git remote rm <name>
+Git remote rename <old-name> <new-name>
+Git remote show <name>
+Git push <remote-name> <branch-name>
+Git clone <url from github>
+Git pull <remote-name>
