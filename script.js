@@ -1,69 +1,63 @@
 "use strict";
 // filter of products project : ------------------------------------
-let number = document.querySelector("span.par")
+let min = "00";
+let sec = "00";
+let milsec = "00";
+let settime;
+let counter = 0;
 const stop = document.querySelector(".stop");
 const play = document.querySelector(".play");
 const save = document.querySelector(".save");
 const savebox = document.getElementById("save-box")
 
-let milsec = "00";
-let sec = "00";
-let min =  "00";
-let setint;
-let counter = 0;
-
-play.addEventListener('click', val => {
+function putval() {
+    document.querySelector(".time .milsec").innerHTML = milsec;
+    document.querySelector(".time .sec").innerHTML = sec;
+    document.querySelector(".time .min").innerHTML = min;
+}
+play.addEventListener('click', () => {
     counter++;
-    if (counter == 1) {
-        setint = setInterval(timer,10);
-        play.classList = "play-green";
-        play.innerHTML = "<i class='fas fa-pause'></i>"
-    }else{
-        clearInterval(setint);
-        counter = 0;
-        play.classList = "play";
-        play.innerHTML = '<i class="fas fa-play"></i>';
-        console.log(`${min} : ${sec} : ${milsec}`);
-    }
-    stop.addEventListener('click', val => {
-        clearInterval(setint);
-        counter = 0;
-        milsec = "00";
-        sec = "00";
-        min =  "00";
-        number.textContent = `00 : 00 : 00`;
-        play.classList = "play";
-        play.innerHTML = '<i class="fas fa-play"></i>';
-        savebox.innerHTML = "";
-    })
-})
-save.addEventListener('click', val => {
-    if (milsec > 0) {
-        const saver = document.createElement("p");
-        saver.classList = "save-time";
-        saver.textContent = `${min} : ${sec} : ${milsec}`;
-        savebox.append(saver);
-    }
-})
-
-function timer() {
-    milsec++;
-    if (milsec < 10) {
-        milsec = "0" + milsec;
-    }
-    if (milsec == 100) {
-        milsec = 0;
+    if (counter == 1){
+        settime = setInterval( () => {
+            milsec++;
+            milsec = milsec < 10 ? "0" + milsec : milsec;
+            if (milsec == 100) {
+            milsec = '0' + 0;
             sec++;
-            if (sec < 10) {
-                sec = "0" + sec;
+            sec = sec < 10 ? "0" + sec : sec;
+            if (sec == 60) {
+                sec = "0" + 0;
+                min++;
+                min = min < 10 ? "0" + min : min;
             }
         }
-    if (sec == 60) {
-        sec = 0;
-        min++;
-        if (min < 10) {
-            min = "0" + min;
-        }
+        putval();
+        },10)
+        play.classList = "play-green";
+        play.innerHTML = '<i class="fas fa-pause"></i>';
+    }else{
+        clearInterval(settime);
+        counter = 0;
+        play.classList = "play";
+        play.innerHTML = '<i class="fas fa-play"></i>';
     }
-    return number.textContent = `${min} : ${sec} : ${milsec}`;
-}
+})
+stop.addEventListener('click', () => {
+    clearInterval(settime);
+    counter = 0;
+    min = "00";
+    sec = "00";
+    milsec = "00";
+    document.querySelector(".time .milsec").innerHTML = '0' + 0;
+    document.querySelector(".time .sec").innerHTML = '0' + 0;
+    document.querySelector(".time .min").innerHTML = '0' + 0;
+    play.classList = "play";
+    play.innerHTML = '<i class="fas fa-play"></i>';
+    savebox.innerHTML = "";
+})
+save.addEventListener('click',() => {
+    let saveEL = document.createElement("p");
+    saveEL.classList = "save-time";
+    saveEL.innerText = `${min} : ${sec} : ${milsec}`;
+    savebox.append(saveEL);
+})
