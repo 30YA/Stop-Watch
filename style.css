@@ -16,9 +16,12 @@ a{
 }
 body,html{
     background-color: #72768e;
+    
+}
+.bd{
+    margin-top: 90px;
     height: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
 }
@@ -28,7 +31,7 @@ body,html{
 .btns button i{
     text-shadow: 2px 8px 20px rgb(117, 117, 117);
 }
-.btns .stop,.btns .redo{
+.btns .stop,.btns .save{
     width: 55px;
     height: 55px;
     font-size: 20px;
@@ -49,9 +52,27 @@ body,html{
     margin-top: 25px;
     border: none;
     border-radius: 50%;
+    transition: background-color 0.3s;
+}
+.play-green{
+    color: aliceblue;
+    background-color: rgb(20, 192, 57);
+    width: 75px;
+    height: 75px;
+    font-size: 28px;
+    padding: 15px;
+    margin-top: 25px;
+    border: none;
+    border-radius: 50%;
+    transition: background-color 0.3s;
 }
 .par{
     font-size: 68px;
     margin: 10px;
+    color: aliceblue;
+}
+.save-time{
+    font-size: 30px;
+    margin: 20px;
     color: aliceblue;
 }
